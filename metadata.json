@@ -1,0 +1,6 @@
+{
+  "name": "Social Media Creative Portfolio",
+  "description": "Editorial pastel blue and yellow vertical portfolio for social media strategists, content creators, and videographers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

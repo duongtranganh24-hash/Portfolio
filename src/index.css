@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --ink: #19232D;
+    --ink-soft: #5A6A7E;
+    --blue: #C5E4F8;
+    --blue-2: #E8F4FC;
+    --blue-3: #82BFE7;
+    --yellow: #FBE8A6;
+    --yellow-2: #FDF6DE;
+    --cream: #FAF7F0;
+    --white: #FFFFFF;
+    --line: #1E293B;
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--ink);
+    background-color: #FAF7F0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-vietnam {
+  font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-display {
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Glassmorphism & Glossy Liquid Bubble Cards (Khung bóng bóng trong suốt mềm mại) */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.62) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 48px -12px rgba(130, 191, 231, 0.22),
+              0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+              0 2px 6px rgba(255, 255, 255, 0.9) inset;
+  border-radius: 32px;
+}
+
+.glass-panel-yellow {
+  background: linear-gradient(135deg, rgba(253, 246, 222, 0.86) 0%, rgba(251, 232, 166, 0.65) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 22px 50px -12px rgba(251, 232, 166, 0.38),
+              0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+              0 2px 6px rgba(255, 255, 255, 0.95) inset;
+  border-radius: 32px;
+}
+
+.glass-panel-blue {
+  background: linear-gradient(135deg, rgba(232, 244, 252, 0.86) 0%, rgba(197, 228, 248, 0.65) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 22px 50px -12px rgba(197, 228, 248, 0.42),
+              0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+              0 2px 6px rgba(255, 255, 255, 0.95) inset;
+  border-radius: 32px;
+}
+
+.glass-panel-dark {
+  background: linear-gradient(135deg, rgba(25, 35, 45, 0.92) 0%, rgba(15, 23, 33, 0.88) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-top: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 26px 55px -12px rgba(0, 0, 0, 0.45),
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+              0 2px 6px rgba(255, 255, 255, 0.18) inset;
+  border-radius: 34px;
+}
+
+.glass-bubble {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-22deg);
+  transition: left 0.85s ease;
+  pointer-events: none;
+}
+
+.glass-sheen:hover::after {
+  left: 140%;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(140, 180, 210, 0.14),
+              0 1px 2px rgba(255, 255, 255, 0.9) inset;
+}
+
+/* Floating & Sparkling Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-2.5deg);
+  }
+}
+
+@keyframes floatHorizontal {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(14px) translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(15deg);
+    filter: drop-shadow(0 0 8px rgba(251, 232, 166, 0.9));
+  }
+}
+
+@keyframes shimmerBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-shimmer-bg {
+  background-size: 200% 200%;
+  animation: shimmerBg 16s ease infinite;
+}
+
+.animate-sparkle {
+  animation: sparkleTwinkle 3.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 6.5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7.5s ease-in-out infinite;
+}
+
+.animate-float-h {
+  animation: floatHorizontal 8.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5.5s ease-in-out infinite;
+}
+
+/* Dreamy Drifting Clouds (Áng mây bay qua lại chuyển động sinh động) */
+@keyframes cloudDriftRight {
+  0% {
+    transform: translateX(-120%) translateY(0px) scale(0.95);
+  }
+  50% {
+    transform: translateX(10%) translateY(-18px) scale(1.05);
+  }
+  100% {
+    transform: translateX(140%) translateY(0px) scale(0.95);
+  }
+}
+
+@keyframes cloudDriftLeft {
+  0% {
+    transform: translateX(130%) translateY(0px) scale(1.02);
+  }
+  50% {
+    transform: translateX(-10%) translateY(16px) scale(0.96);
+  }
+  100% {
+    transform: translateX(-130%) translateY(0px) scale(1.02);
+  }
+}
+
+@keyframes cloudBob {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.03);
+  }
+}
+
+.animate-cloud-drift-right {
+  animation: cloudDriftRight 38s linear infinite;
+}
+
+.animate-cloud-drift-left {
+  animation: cloudDriftLeft 46s linear infinite;
+}
+
+.animate-cloud-drift-slow {
+  animation: cloudDriftRight 62s linear infinite;
+}
+
+.animate-cloud-bob {
+  animation: cloudBob 8s ease-in-out infinite;
+}
+
+/* Continuous Marquees */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 28s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 28s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+
+

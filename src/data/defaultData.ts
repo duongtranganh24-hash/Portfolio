@@ -1,0 +1,540 @@
+import { ProjectItem, CaseStudyItem, VideoItem, MediaItem, PortfolioContent, ExperienceItem } from '../types';
+
+export const DEFAULT_CONTENT: PortfolioContent = {
+  brandName: 'MY PORTFOLIO',
+  heroKicker: 'SOCIAL MEDIA • CONTENT • CREATIVE',
+  heroScript: "jade's",
+  heroTitleMain: 'SOCIAL',
+  heroTitleOutline: 'PORTFOLIO',
+  heroDescription: 'Tôi xây dựng nội dung, social media và những câu chuyện hình ảnh có khả năng khiến thương hiệu được nhớ đến — từ nghiên cứu insight, chiến lược thị giác đến sản xuất clip ngắn và video lan tỏa.',
+  aboutEyebrow: '01 / WHO I AM · GIỚI THIỆU',
+  aboutTitle: 'WHO',
+  aboutTitleStroke: 'I AM',
+  aboutText: 'Tôi là một content creator & social media enthusiast yêu thích việc biến insight của người xem thành những nội dung vừa có chiến lược vừa có cảm xúc. Portfolio này có thể dùng để trình bày dự án học tập, freelance, social campaign, F&B content, video và các case study cá nhân.',
+  stat1Number: '50+',
+  stat1Label: 'Dự án & Nội dung',
+  stat2Number: '20M+',
+  stat2Label: 'Lượt xem & Tiếp cận',
+  stat3Number: '3+',
+  stat3Label: 'Năm kinh nghiệm',
+  qualEyebrow: '02 / QUALIFICATIONS · KỸ NĂNG & CÔNG CỤ',
+  qualTitle: 'SKILLS & TOOLS',
+  workEyebrow: '03 / SELECTED WORK · DỰ ÁN NỔI BẬT',
+  workTitle: 'MY WORK',
+  workIntro: 'Mỗi ô dưới đây là một khu vực độc lập để bạn đưa ảnh dự án, poster, social feed, infographic hoặc thiết kế vào.',
+  testimonialQuote: '“Một portfolio tốt không chỉ cho thấy bạn đã làm gì, mà còn cho thấy bạn nghĩ như thế nào.”',
+  testimonialAuthor: '— CLIENT / LECTURER / TEAMMATE',
+  contactEyebrow: "08 / LET'S WORK TOGETHER · KẾT NỐI",
+  contactTitle: "LET'S MAKE IT.",
+  contactDescription: 'Bạn có một campaign, video, social page hoặc ý tưởng muốn biến thành một sản phẩm thật đẹp? Hãy để thông tin liên hệ ở đây.',
+  contactEmail: 'duongtranganh24@gmail.com',
+  socialLinks: [
+    { id: 's1', platform: 'email', label: 'EMAIL (GMAIL)', url: 'mailto:duongtranganh24@gmail.com' },
+    { id: 's2', platform: 'instagram', label: 'INSTAGRAM', url: 'https://instagram.com' },
+    { id: 's3', platform: 'tiktok', label: 'TIKTOK', url: 'https://tiktok.com' },
+    { id: 's4', platform: 'facebook', label: 'FACEBOOK', url: 'https://facebook.com' },
+  ],
+  footerCopy: '© 2026 YOUR NAME — CREATIVE PORTFOLIO',
+};
+
+export const INITIAL_MEDIA_SLOTS: Record<string, MediaItem> = {
+  hero: {
+    id: 'hero',
+    type: 'image',
+    title: 'HÌNH ẢNH HERO',
+    subtitle: 'Để trống khu vực này để bạn đưa ảnh chân dung / ảnh concept vào sau.',
+    icon: '✦',
+    aspectRatio: '1/1',
+  },
+  about: {
+    id: 'about',
+    type: 'image',
+    title: 'ẢNH CÁ NHÂN',
+    subtitle: 'Thay bằng ảnh portrait / ảnh lifestyle của bạn.',
+    icon: '◌',
+    aspectRatio: '4/3',
+  },
+  certificate: {
+    id: 'certificate',
+    type: 'image',
+    title: 'CHỨNG CHỈ / BẰNG CẤP',
+    subtitle: 'Để ảnh certificate, bằng khen hoặc giải thưởng tại đây.',
+    icon: '▱',
+    aspectRatio: '16/9',
+  },
+  project1: {
+    id: 'project1',
+    type: 'image',
+    title: 'PROJECT IMAGE 01',
+    subtitle: 'Poster / campaign / social post',
+    icon: '▧',
+    aspectRatio: '16/10',
+  },
+  project2: {
+    id: 'project2',
+    type: 'image',
+    title: 'PROJECT IMAGE 02',
+    subtitle: 'Social media feed / carousel',
+    icon: '▤',
+    aspectRatio: '16/10',
+  },
+  project3: {
+    id: 'project3',
+    type: 'image',
+    title: 'PROJECT IMAGE 03',
+    subtitle: 'SEO / article / infographic',
+    icon: '◎',
+    aspectRatio: '16/10',
+  },
+  project4: {
+    id: 'project4',
+    type: 'image',
+    title: 'PROJECT IMAGE 04',
+    subtitle: 'Marketing / campaign result',
+    icon: '◫',
+    aspectRatio: '16/10',
+  },
+  visualBreak: {
+    id: 'visualBreak',
+    type: 'image',
+    title: 'ẢNH / COLLAGE / BANNER LỚN',
+    subtitle: 'Khung này kéo dài toàn chiều ngang, phù hợp để đặt một visual lớn giữa portfolio.',
+    icon: '✦',
+    aspectRatio: '16/9',
+  },
+  caseStudy1: {
+    id: 'caseStudy1',
+    type: 'image',
+    title: 'CASE STUDY VISUAL 01',
+    subtitle: 'Ảnh campaign / mockup / dashboard số liệu',
+    icon: '▧',
+    aspectRatio: '16/9',
+  },
+  caseStudy2: {
+    id: 'caseStudy2',
+    type: 'video',
+    title: 'VIDEO / THUMBNAIL CASE 02',
+    subtitle: 'Để thumbnail hoặc video clip case study tại đây.',
+    icon: '▶',
+    aspectRatio: '9/16',
+  },
+  caseStudy3: {
+    id: 'caseStudy3',
+    type: 'image',
+    title: 'EDITORIAL VISUAL 03',
+    subtitle: 'Ảnh e-magazine / website / moodboard',
+    icon: '◫',
+    aspectRatio: '16/9',
+  },
+  video1: {
+    id: 'video1',
+    type: 'video',
+    title: 'VIDEO 01 (PROJECT REEL)',
+    subtitle: 'Thay khối này bằng video MP4, clip YouTube hoặc TikTok của bạn.',
+    icon: '▶',
+    aspectRatio: '16/9',
+  },
+  video2: {
+    id: 'video2',
+    type: 'video',
+    title: 'VIDEO 02 (SHORT-FORM)',
+    subtitle: 'Khung dọc chuẩn 9:16 tối ưu cho TikTok / Reels / Shorts.',
+    icon: '▶',
+    aspectRatio: '9/16',
+  },
+  video3: {
+    id: 'video3',
+    type: 'video',
+    title: 'VIDEO 03 (BEHIND THE SCENES)',
+    subtitle: 'Thêm clip hậu trường, quy trình sáng tạo hoặc portfolio reel.',
+    icon: '▶',
+    aspectRatio: '16/9',
+  },
+};
+
+// Preset demo URLs in case user wants to test how it looks populated
+export const DEMO_PRESETS: Record<string, { url: string; videoType?: 'url' | 'youtube' | 'local' }> = {
+  hero: {
+    url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80',
+  },
+  about: {
+    url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
+  },
+  certificate: {
+    url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+  },
+  project1: {
+    url: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1000&q=80',
+  },
+  project2: {
+    url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80',
+  },
+  project3: {
+    url: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=80',
+  },
+  project4: {
+    url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
+  },
+  visualBreak: {
+    url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80',
+  },
+  caseStudy1: {
+    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+  },
+  caseStudy2: {
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    videoType: 'url',
+  },
+  caseStudy3: {
+    url: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80',
+  },
+  video1: {
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    videoType: 'url',
+  },
+  video2: {
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
+    videoType: 'url',
+  },
+  video3: {
+    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    videoType: 'url',
+  },
+};
+
+export const PROJECTS: ProjectItem[] = [
+  {
+    id: 'p1',
+    title: 'BRANDING & AESTHETIC',
+    category: 'Branding',
+    tags: ['BRANDING', 'DESIGN'],
+    description: 'Xây dựng bộ nhận diện thị giác cá tính, bảng màu pastel kết hợp typography mạnh mẽ cho chiến dịch ra mắt sản phẩm.',
+    fullContent: 'Dự án tập trung vào việc định vị thương hiệu mới trong thị trường Gen Z, khai thác các gam màu pastel năng động đối lập với viền đen editorial sắc nét. Kết quả: Tăng độ nhận diện 68% sau 1 tháng chạy launch campaign.',
+    client: 'Lumina Studio',
+    year: '2025',
+    mediaSlotId: 'project1',
+  },
+  {
+    id: 'p2',
+    title: 'SOCIAL MEDIA',
+    category: 'Social Media',
+    tags: ['SOCIAL', 'CONTENT'],
+    description: 'Chiến lược nội dung đa nền tảng, visual direction và cách triển khai định dạng carousel giữ chân người xem.',
+    fullContent: 'Kế hoạch content 30 ngày cho kênh TikTok & Instagram, kết hợp giữa chia sẻ kiến thức cô đọng và visual template hiện đại. Tỷ lệ lưu bài đạt 14.2% và thu hút hơn 85.000 followers tự nhiên.',
+    client: 'Bloom Matcha Cafe',
+    year: '2025',
+    mediaSlotId: 'project2',
+  },
+  {
+    id: 'p3',
+    title: 'SEO & COPYWRITING',
+    category: 'SEO & Copy',
+    tags: ['SEO', 'COPY'],
+    description: 'Nội dung bài viết được xây dựng dựa trên search intent và insight người đọc, kết hợp storytelling cảm xúc.',
+    fullContent: 'Hệ thống 15 bài viết chuẩn SEO tối ưu on-page kết hợp tone of voice dí dỏm, biến các chủ đề khô khan thành nội dung dễ đọc. Đưa 8 từ khóa ngành vào Top 3 Google Organic Search.',
+    client: 'EcoLiving Viet',
+    year: '2024',
+    mediaSlotId: 'project3',
+  },
+  {
+    id: 'p4',
+    title: 'CAMPAIGN CONTENT',
+    category: 'Campaign',
+    tags: ['CAMPAIGN', 'STRATEGY'],
+    description: 'Ý tưởng, key message, format và cách chuyển hóa chiến lược marketing thành chuỗi content lan tỏa cao.',
+    fullContent: 'Chiến dịch mùa hè với thông điệp "Sống đậm từng khoảnh khắc", tích hợp mini-game tương tác và video viral ngắn. Đạt tổng 2.4 triệu lượt xem và hơn 18.000 lượt chia sẻ.',
+    client: 'Summer Beat Festival',
+    year: '2024',
+    mediaSlotId: 'project4',
+  },
+];
+
+export const CASE_STUDIES: CaseStudyItem[] = [
+  {
+    number: '01',
+    tag: 'SOCIAL CAMPAIGN',
+    hook: 'FROM INSIGHT TO CONTENT',
+    title: 'CHIẾN DỊCH TÁI ĐỊNH VỊ THƯƠNG HIỆU F&B',
+    description: 'Phân tích insight đối tượng khách hàng trẻ tuổi: họ không chỉ mua đồ uống, họ mua trải nghiệm không gian và câu chuyện có thể chia sẻ lên story. Chiến dịch tập trung vào micro-moments hàng ngày.',
+    highlights: [
+      'Nghiên cứu 1,200 phản hồi của khách hàng tại cửa hàng',
+      'Xây dựng 4 trụ cột nội dung: Thư viện công thức, Hậu trường barista, Khách quen kể chuyện, Cảm hứng sáng tạo',
+      'Đạt hơn 1.8M lượt hiển thị hữu cơ trong tháng đầu tiên'
+    ],
+    mediaSlotId: 'caseStudy1',
+    mediaType: 'image',
+  },
+  {
+    number: '02',
+    tag: 'F&B / VIRAL CONTENT',
+    hook: 'HOOK → STORY → RETENTION',
+    title: 'SERIES SHORT-FORM VIDEO "HẬU TRƯỜNG PHA CHẾ"',
+    description: 'Khu vực này dùng để trình bày cách tối ưu 3 giây đầu tiên (hook), giữ nhịp chuyển cảnh mượt mà và call-to-action tự nhiên thúc đẩy người xem để lại bình luận thảo luận.',
+    highlights: [
+      'Tối ưu tỷ lệ Retention 3s đầu lên đến 72%',
+      'Cấu trúc kịch bản 3 bước: Thử thách kỳ lạ → Bí quyết bất ngờ → Thành phẩm mãn nhãn',
+      '5 video đạt mốc trên 500K views hữu cơ trên TikTok & Reels'
+    ],
+    mediaSlotId: 'caseStudy2',
+    mediaType: 'video',
+  },
+  {
+    number: '03',
+    tag: 'EDITORIAL / DIGITAL',
+    hook: 'STORYTELLING THROUGH DESIGN',
+    title: 'E-MAGAZINE KỸ THUẬT SỐ ĐA PHƯƠNG TIỆN',
+    description: 'Dự án xuất bản số kết hợp phong cách tạp chí in truyền thống với bố cục cuộn dọc hiện đại. Định dạng tương tác cho phép người đọc khám phá câu chuyện một cách tự nhiên.',
+    highlights: [
+      'Phát triển hệ thống lưới editorial tương thích điện thoại di động',
+      'Tích hợp infographic tương tác và trích dẫn nổi bật',
+      'Thời gian đọc trung bình đạt 4 phút 18 giây mỗi độc giả'
+    ],
+    mediaSlotId: 'caseStudy3',
+    mediaType: 'image',
+  },
+];
+
+export const VIDEO_SHOWCASE: VideoItem[] = [
+  {
+    id: 'v1',
+    number: '01',
+    label: 'COMMERCIAL / PROJECT SHOWREEL',
+    category: 'CLIENT / BRAND REEL',
+    description: 'Tổng hợp các cảnh quay ấn tượng từ các chiến dịch video thương mại, nhịp điệu nhanh và bắt tai.',
+    mediaSlotId: 'video1',
+    aspectRatio: '16/9',
+  },
+  {
+    id: 'v2',
+    number: '02',
+    label: 'SHORT-FORM VIDEO HIGHLIGHTS',
+    category: 'TIKTOK & REELS 9:16',
+    description: 'Khung dọc tối ưu hóa hoàn hảo cho các video định dạng Shorts / Reels / TikTok với nhịp dựng lôi cuốn.',
+    mediaSlotId: 'video2',
+    aspectRatio: '9/16',
+  },
+  {
+    id: 'v3',
+    number: '03',
+    label: 'BEHIND THE SCENES & PRODUCTION',
+    category: 'BEHIND THE SCENES',
+    description: 'Những khoảnh khắc hậu trường thực tế, set up ánh sáng, quay chụp và quy trình sản xuất nội dung.',
+    mediaSlotId: 'video3',
+    aspectRatio: '16/9',
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'INSIGHT',
+    description: 'Tìm vấn đề, nghiên cứu hành vi khán giả và phát hiện điều khiến người xem thực sự dừng ngón tay lại.',
+    tag: 'NGHIÊN CỨU',
+  },
+  {
+    number: '02',
+    title: 'IDEA',
+    description: 'Chuyển hóa insight thành concept độc đáo, moodboard thị giác và visual direction rõ ràng.',
+    tag: 'Ý TƯỞNG',
+  },
+  {
+    number: '03',
+    title: 'CREATE',
+    description: 'Viết copy, lên storyboard, quay chụp, thiết kế và edit video với nhịp điệu chỉnh chu.',
+    tag: 'SẢN XUẤT',
+  },
+  {
+    number: '04',
+    title: 'OPTIMIZE',
+    description: 'Đo lường chỉ số tương tác, lắng nghe phản hồi của người xem và tinh chỉnh định dạng cho lượt tiếp theo.',
+    tag: 'TỐI ƯU',
+  },
+];
+
+export const SKILLS_LIST = [
+  {
+    name: 'Xây dựng kịch bản video ngắn & content theo trend TikTok/Facebook',
+    tag: 'TIKTOK & REELS',
+    desc: 'Bắt nhịp thuật toán, thiết kế hook 3 giây đầu giữ chân khán giả và phát triển kịch bản chuyển đổi viral.',
+  },
+  {
+    name: 'Lên kế hoạch và triển khai truyền thông sự kiện',
+    tag: 'EVENT & PR',
+    desc: 'Lập kế hoạch timeline trước - trong - sau sự kiện, điều phối luồng thông điệp đa kênh đồng bộ.',
+  },
+  {
+    name: 'Giao tiếp, phối hợp với team, KOL/KOC và đối tác',
+    tag: 'KOL & TEAMWORK',
+    desc: 'Kết nối linh hoạt, brief công việc chuẩn xác, làm việc ăn ý với creator và đối tác chiến dịch.',
+  },
+  {
+    name: 'Viết nội dung PR, thông điệp truyền thông, email hợp tác',
+    tag: 'PR & COPYWRITING',
+    desc: 'Soạn thảo thông cáo báo chí, bài viết PR chuẩn định vị thương hiệu và thư ngỏ chuyên nghiệp.',
+  },
+  {
+    name: 'Quay, chụp, edit video/hình ảnh quảng bá',
+    tag: 'PRODUCTION',
+    desc: 'Chủ động góc máy, ánh sáng, ghi hình hiện trường và hậu kỳ hình ảnh/video quảng bá cuốn hút.',
+  },
+  {
+    name: 'Sử dụng Premiere, CapCut, Canva',
+    tag: 'CREATIVE TOOLS',
+    desc: 'Thành thạo các công cụ dựng video, cắt ghép theo nhịp điệu âm nhạc, color grading và thiết kế đồ họa.',
+  },
+  {
+    name: 'Viết bài truyền thông, kịch bản video ngắn',
+    tag: 'STORYTELLING',
+    desc: 'Biến insight người xem thành những bài viết truyền cảm hứng và kịch bản video ngắn hấp dẫn.',
+  },
+  {
+    name: 'Giao tiếp & thuyết trình tốt',
+    tag: 'COMMUNICATION',
+    desc: 'Truyền tải ý tưởng rõ ràng, tự tin thuyết trình pitch ý tưởng sáng tạo trước khách hàng và đội ngũ.',
+  },
+  {
+    name: 'Tư duy sáng tạo, bắt trend nhanh',
+    tag: 'TREND CATCHING',
+    desc: 'Nhạy bén với các xu hướng hot nhất trên mạng xã hội, biến tấu trend khéo léo gắn liền với thương hiệu.',
+  },
+  {
+    name: 'Tự tin trước ống kính, có năng lượng tích cực khi làm video',
+    tag: 'ON-CAMERA TALENT',
+    desc: 'Phong thái tự nhiên, biểu cảm sinh động, lan tỏa năng lượng tích cực và cuốn hút người xem.',
+  },
+];
+
+export const EXPERIENCE_LIST: ExperienceItem[] = [
+  {
+    id: 'exp1',
+    company: 'Vitamin Network',
+    period: '03/2026 – 09/2026',
+    role: 'VJ | TikTok Video Editor | Scriptwriter',
+    tag: 'MCN & CREATOR',
+    highlights: [
+      'Đảm nhiệm vai trò VJ kiêm Editor TikTok, trực tiếp đứng hình, quay và dựng video short-form.',
+      'Lên ý tưởng, xây dựng hook, storytelling và kịch bản cho nội dung TikTok.',
+      'Trực tiếp biên tập video: cut, pacing, text, sound, transition và visual.',
+      'Tối ưu nội dung theo đặc trưng TikTok, tập trung vào hook, retention và khả năng tương tác.',
+      'Phối hợp với ekip trong quá trình sản xuất và hoàn thiện video.',
+      'Khai thác insight người xem và xu hướng social media để phát triển nội dung.',
+    ],
+  },
+  {
+    id: 'exp2',
+    company: 'POLVO',
+    period: '2026',
+    role: 'VJ | TikTok Video Editor | Scriptwriter',
+    tag: 'F&B & BRAND STORY',
+    highlights: [
+      'Đảm nhiệm VJ kiêm Editor TikTok, trực tiếp tham gia quay hình và hậu kỳ.',
+      'Viết và phát triển kịch bản TikTok, xây dựng hook và storytelling cho từng nội dung.',
+      'Dựng video với nhịp cắt, text, sound, visual và transition phù hợp với TikTok.',
+      'Khai thác consumer insight, trend và hành vi người dùng để phát triển nội dung.',
+      'Tham gia xây dựng nội dung giới thiệu món ăn, trải nghiệm khách hàng và câu chuyện thương hiệu.',
+      'Phối hợp với ekip để đảm bảo video đúng concept và định hướng thương hiệu.',
+    ],
+  },
+  {
+    id: 'exp3',
+    company: 'MUSIC BOX LICI',
+    period: '2026',
+    role: 'VJ | TikTok Video Editor | Content Creator',
+    tag: 'MUSIC & ENTERTAINMENT',
+    highlights: [
+      'Đảm nhiệm vai trò VJ kiêm Editor TikTok cho nội dung truyền thông của brand.',
+      'Trực tiếp tham gia lên ý tưởng, quay hình và dựng video short-form.',
+      'Xây dựng format và cách thể hiện nội dung phù hợp với hình ảnh thương hiệu.',
+      'Biên tập video TikTok với hook, pacing, text, âm thanh và visual nhằm tăng khả năng giữ chân người xem.',
+      'Tham gia xây dựng nội dung mang tính giải trí, gần gũi và phù hợp với hành vi người dùng TikTok.',
+      'Phối hợp với ekip/brand trong quá trình sản xuất và hoàn thiện nội dung.',
+    ],
+  },
+  {
+    id: 'exp4',
+    company: 'Pure Imagination Network',
+    period: '2024 – 2025',
+    role: 'VJ | TikTok Video Editor | Production & KOL Content Support',
+    tag: 'PRODUCTION & KOL',
+    highlights: [
+      'Tham gia VJ và dựng TikTok, hỗ trợ trực tiếp quá trình quay hình và hậu kỳ.',
+      'Hỗ trợ lên ý tưởng và viết kịch bản short-form content.',
+      'Dựng và hoàn thiện video TikTok theo định hướng hình ảnh của từng KOL.',
+      'Hỗ trợ sản xuất content cho các KOL như Ngôi Sao Phương Nam, Minh Anh và Cocovie.',
+      'Tham gia setup production, quay dựng và hậu kỳ trong các buổi sản xuất.',
+      'Hỗ trợ phát triển nội dung phù hợp với hình ảnh và định hướng riêng của từng KOL.',
+      'Hỗ trợ kết nối KOL/KOC và viết email hợp tác cho các dự án nội bộ.',
+    ],
+  },
+  {
+    id: 'exp5',
+    company: 'Dự án “Vi Nhựa”',
+    period: '2026',
+    role: 'Project Leader | Content & Social Media Management',
+    tag: 'LEADERSHIP & CAMPAIGN',
+    highlights: [
+      'Xây dựng concept và chiến lược truyền thông tổng thể cho dự án.',
+      'Quản lý nội dung trên Facebook, TikTok, Instagram và YouTube.',
+      'Xây dựng content plan và định hướng format cho từng nền tảng.',
+      'Quản lý, phân công và điều phối đội ngũ sáng tạo nội dung.',
+      'Định hướng visual, tone of voice và hình ảnh thương hiệu.',
+      'Theo dõi tiến độ, kiểm soát chất lượng và điều phối quá trình sản xuất.',
+      'Chuyển hóa chủ đề vi nhựa thành nội dung trực quan, dễ tiếp cận với người trẻ.',
+    ],
+  },
+  {
+    id: 'exp6',
+    company: 'IAE Global Vietnam',
+    period: '2024 – 2025',
+    role: 'Content Creator | Event Leader',
+    tag: 'EDUCATION & EVENT',
+    highlights: [
+      'Quản lý và xây dựng nội dung cho TikTok và Fanpage Facebook trong 8 tháng.',
+      'Lên ý tưởng, viết nội dung, quay dựng và biên tập video short-form.',
+      'Tối ưu nội dung theo xu hướng social media và hành vi Gen Z.',
+      'Sản xuất nội dung về du học, lifestyle sinh viên và tuyển sinh.',
+      'Đảm nhiệm vai trò Event Leader trong sự kiện “Du học Hà Lan 2025”.',
+      'Điều phối đội nhóm, quản lý tiến độ và hỗ trợ truyền thông sự kiện.',
+    ],
+  },
+  {
+    id: 'exp7',
+    company: 'TikTok cá nhân – “Chanhcutephomaiwe”',
+    period: '2024 – 2025',
+    role: 'Content Creator | TikTok Video Editor',
+    tag: 'PERSONAL CHANNEL',
+    highlights: [
+      'Tự phát triển ý tưởng, quay và dựng video TikTok.',
+      'Xây dựng storytelling và thử nghiệm nhiều format short-form.',
+      'Theo dõi trend và hành vi người dùng để tối ưu nội dung.',
+      'Phát triển kênh đạt hơn 13.000 followers tự nhiên.',
+    ],
+  },
+  {
+    id: 'exp8',
+    company: 'Thông Tấn Xã Việt Nam – VietnamPlus',
+    period: '2024',
+    role: 'Kiến tập sinh – Ban Phóng viên',
+    tag: 'PRESS & JOURNALISM',
+    highlights: [
+      'Viết bài cho chuyên mục Văn hóa – Trung Thu.',
+      'Chụp ảnh sự kiện và nhân vật phục vụ bài viết.',
+      'Thiết kế poster truyền thông.',
+      'Làm quen với quy trình sản xuất và biên tập nội dung báo chí.',
+    ],
+  },
+  {
+    id: 'exp9',
+    company: 'VTC Tam Trinh',
+    period: '2024',
+    role: 'Cộng tác viên – Content & Media (Dự án: Xây dựng kênh TikTok)',
+    tag: 'BROADCAST & MEDIA',
+    highlights: [
+      'Sáng tạo nội dung video và bài viết cho nền tảng số.',
+      'Hỗ trợ quay, dựng và hậu kỳ TikTok.',
+      'Tham gia xây dựng format và định hướng nội dung video ngắn.',
+      'Sản xuất nội dung theo xu hướng và hành vi người dùng trên TikTok.',
+    ],
+  },
+];
+
